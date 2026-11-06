@@ -4,12 +4,14 @@ import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, deleteDoc, g
 
 // Firebase Console > Project settings > Your apps > SDK setup > Config
 const firebaseConfig = {
-  apiKey: "YOUR_FIREBASE_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.firebasestorage.app",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_FIREBASE_APP_ID"
+  apiKey: "AIzaSyDA2sJLfHGgSDPud3J4G7gOV3a_dabmhHw",
+  authDomain: "takarjhor-513e6.firebaseapp.com",
+  databaseURL: "https://takarjhor-513e6-default-rtdb.firebaseio.com",
+  projectId: "takarjhor-513e6",
+  storageBucket: "takarjhor-513e6.firebasestorage.app",
+  messagingSenderId: "896280156717",
+  appId: "1:896280156717:web:6f05e7d3a6d0a50290b6a4",
+  measurementId: "G-LZNJJC5C21"
 };
 
 const app = initializeApp(firebaseConfig);

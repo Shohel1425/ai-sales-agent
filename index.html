@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AI Sales Agent — Admin</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="shell">
+    <section id="loginView" class="panel login">
+      <div class="brand">✦ AI Sales Agent</div>
+      <h1>অ্যাডমিন লগইন</h1>
+      <p class="muted">আপনার অনুমোদিত অ্যাডমিন ইমেইল দিয়ে প্রবেশ করুন।</p>
+      <form id="loginForm">
+        <label>ইমেইল<input id="email" type="email" autocomplete="username" required></label>
+        <label>পাসওয়ার্ড<input id="password" type="password" autocomplete="current-password" required></label>
+        <button type="submit">লগইন করুন</button>
+      </form>
+      <p id="loginError" class="error" role="alert"></p>
+    </section>
+
+    <section id="appView" hidden>
+      <header class="topbar">
+        <div><div class="brand">✦ AI Sales Agent</div><div class="muted">Admin workspace</div></div>
+        <button id="logoutBtn" class="secondary">লগআউট</button>
+      </header>
+      <nav class="tabs">
+        <button class="tab active" data-tab="dashboard">ড্যাশবোর্ড</button>
+        <button class="tab" data-tab="products">পণ্য</button>
+        <button class="tab" data-tab="customers">গ্রাহক</button>
+        <button class="tab" data-tab="orders">অর্ডার</button>
+        <button class="tab" data-tab="conversations">কথোপকথন</button>
+        <button class="tab" data-tab="settings">সেটিংস</button>
+      </nav>
+
+      <section id="dashboard" class="view">
+        <h1>ড্যাশবোর্ড</h1>
+        <div class="stats">
+          <article class="stat"><span>পণ্য</span><strong id="productCount">—</strong></article>
+          <article class="stat"><span>গ্রাহক</span><strong id="customerCount">—</strong></article>
+          <article class="stat"><span>অর্ডার</span><strong id="orderCount">—</strong></article>
+          <article class="stat"><span>কথোপকথন</span><strong id="conversationCount">—</strong></article>
+        </div>
+        <p class="notice">এটি Firebase-সংযুক্ত প্রাথমিক অ্যাডমিন প্যানেল। WhatsApp/Messenger লাইভ ইনবক্স ও AI উত্তর এখনো সংযুক্ত নয়।</p>
+      </section>
+
+      <section id="products" class="view" hidden>
+        <div class="section-head"><h1>পণ্য ব্যবস্থাপনা</h1><button id="newProductBtn">+ পণ্য যোগ করুন</button></div>
+        <form id="productForm" class="panel form-grid" hidden>
+          <input id="productId" type="hidden">
+          <label>পণ্যের নাম<input id="pName" required maxlength="120"></label>
+          <label>দাম (BDT)<input id="pPrice" type="number" min="0" step="0.01" required></label>
+          <label>ছাড় (%)<input id="pDiscount" type="number" min="0" max="100" value="0"></label>
+          <label>স্টক<input id="pStock" type="number" min="0" value="0"></label>
+          <label>ক্যাটাগরি<input id="pCategory" maxlength="80"></label>
+          <label>ছবির URL<input id="pImage" type="url" placeholder="https://..."></label>
+          <label class="wide">বিবরণ<textarea id="pDescription" rows="3"></textarea></label>
+          <label class="check"><input id="pActive" type="checkbox" checked> পণ্য সক্রিয়</label>
+          <div class="actions wide"><button type="submit">সেভ করুন</button><button type="button" id="cancelProduct" class="secondary">বাতিল</button></div>
+        </form>
+        <div id="productList" class="list"></div>
+      </section>
+
+      <section id="customers" class="view" hidden><h1>গ্রাহক</h1><div id="customerList" class="list"></div></section>
+      <section id="orders" class="view" hidden><h1>অর্ডার</h1><div id="orderList" class="list"></div></section>
+      <section id="conversations" class="view" hidden><h1>কথোপকথন</h1><div id="conversationList" class="list"></div></section>
+
+      <section id="settings" class="view" hidden>
+        <h1>সেটিংস</h1>
+        <form id="settingsForm" class="panel form-grid">
+          <label>ব্যবসার নাম<input id="businessName" maxlength="120"></label>
+          <label>উত্তরের ভাষা<select id="language"><option value="bn">বাংলা</option><option value="en">English</option><option value="both">বাংলা + English</option></select></label>
+          <label>ডিফল্ট মোড<select id="replyMode"><option value="ai">AI স্বয়ংক্রিয়</option><option value="manual">ম্যানুয়াল</option><option value="hybrid">AI + ম্যানুয়াল</option></select></label>
+          <label class="check"><input id="aiEnabled" type="checkbox"> AI উত্তর চালু (সেটিংস মাত্র; AI API এখনো যুক্ত নয়)</label>
+          <div class="wide"><button type="submit">সেটিংস সেভ করুন</button></div>
+        </form>
+      </section>
+      <p id="status" class="status" aria-live="polite"></p>
+    </section>
+  </main>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
